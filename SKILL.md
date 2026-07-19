@@ -78,6 +78,12 @@ Read only the files needed for the task:
 - AI/LLM feature safety: `references/ai-safety.md`
 - Infrastructure/cloud/IaC: `references/infrastructure.md`
 - Documentation quality: `references/documentation.md`
+- Multi-tenancy and tenant isolation: `references/multi-tenancy.md`
+- Payments, billing, webhooks, and reconciliation: `references/payments.md`
+- Email, notifications, unsubscribe, and deliverability: `references/notifications.md`
+- Data import/export and file processing: `references/data-import-export.md`
+- API compatibility, versioning, and deprecation: `references/api-compatibility.md`
+- Developer experience, local setup, and onboarding: `references/developer-experience.md`
 - Machine-readable review checklist and severity model: `references/quality-checklist.json`
 - Concrete examples and anti-examples: `examples/`
 - Review/audit prompts by area: `auditors/`
@@ -112,7 +118,7 @@ If the stack is not represented, use the closest example for the concept only an
 
 ## Review Workflow
 
-1. Classify the task: database, backend, frontend, mobile, HTTP API, GraphQL API, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, testing, performance, observability, delivery/configuration, utilities/libraries, or cross-stack.
+1. Classify the task: database, backend, frontend, mobile, HTTP API, GraphQL API, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, multi-tenancy, payments/billing, notifications, data import/export, API compatibility, developer experience, testing, performance, observability, delivery/configuration, utilities/libraries, or cross-stack.
 2. Load the relevant reference files, auditor file, and `references/quality-checklist.json`.
 3. Inventory the current implementation:
    - database: schema source, migrations, models, relations, indexes, constraints;
@@ -134,6 +140,12 @@ If the stack is not represented, use the closest example for the concept only an
    - AI/LLM safety: prompt boundaries, tool permissions, evals, data leakage, fallback behavior;
    - infrastructure: IaC, IAM, network exposure, secrets, environment parity;
    - documentation: README/API/onboarding accuracy, stale docs, generated-doc drift;
+   - multi-tenancy: tenant scoping, cross-tenant leaks, ownership checks, tenant-aware uniqueness;
+   - payments/billing: idempotency, webhook verification, reconciliation, invoices, refunds;
+   - notifications: email/SMS/push templates, retries, unsubscribe, delivery tracking;
+   - data import/export: parsing, validation, partial failure, idempotency, privacy;
+   - API compatibility: versioning, breaking changes, deprecation, client compatibility;
+   - developer experience: setup, scripts, seed data, local env, debugging, onboarding;
    - utilities/libraries: shared helpers, duplicate functions, dead code, dependency overlap.
 4. Report findings by severity: critical, high, medium, low.
 5. Recommend one practical path. Include trade-offs only when there are genuinely competing good options.
@@ -174,7 +186,7 @@ Use this workflow for broad audits that cover multiple areas.
    - the relevant file from `references/`
    - `references/quality-checklist.json`
    - `templates/review-findings.md`
-4. For whole-project audits, do not run a single general auditor when subagents are available. Fan out across all relevant areas: database, backend, frontend, mobile, HTTP API, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, utilities, testing, performance, observability, and delivery/configuration.
+4. For whole-project audits, do not run a single general auditor when subagents are available. Fan out across all relevant areas: database, backend, frontend, mobile, HTTP API, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, multi-tenancy, payments/billing, notifications, data import/export, API compatibility, developer experience, utilities, testing, performance, observability, and delivery/configuration.
 5. For narrow reviews, run only the matching auditor or auditors. For example, a frontend-only architecture review should use the frontend auditor, not every auditor.
 6. Skip auditors for systems the project does not use. For example, skip GraphQL if there is no GraphQL schema, resolver, client operation, or dependency.
 7. If subagents are unavailable, run the same auditors sequentially in the main context.
@@ -205,5 +217,11 @@ Use this workflow for broad audits that cover multiple areas.
 - AI/LLM safety: prompts, tools, retrieval, data handling, evals, and fallbacks need explicit boundaries.
 - Infrastructure: prefer declarative, reviewed, least-privilege infrastructure with safe defaults and environment parity.
 - Documentation: docs should be accurate, concise, linked to decisions, and verified against code when used to guide agents.
+- Multi-tenancy: every data read/write must be tenant-scoped when the product is tenant-aware.
+- Payments: payment flows must be idempotent, auditable, reconciled, and safe around webhooks and retries.
+- Notifications: user messaging needs templates, retries, unsubscribe/consent, delivery visibility, and privacy checks.
+- Data import/export: parse defensively, validate before mutation, handle partial failure, and avoid leaking private data.
+- API compatibility: public/client-facing contracts need versioning, deprecation, and backward-compatibility discipline.
+- Developer experience: local setup, commands, seed data, and debugging paths should be documented and reproducible.
 - Utilities: shared helpers should be small, named by domain purpose, tested when behavior is nontrivial, and not duplicate built-in or installed library features.
 - Engineering: KISS before cleverness, DRY after the duplication is real, composition before inheritance, deletion before abstraction.

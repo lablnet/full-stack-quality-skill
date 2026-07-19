@@ -2,7 +2,7 @@
 
 A reusable AI coding skill for reviewing, designing, and implementing maintainable full-stack software.
 
-It covers database design, backend architecture, frontend architecture, mobile, HTTP APIs, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, utilities, testing, performance, observability, and delivery/configuration.
+It covers database design, backend architecture, frontend architecture, mobile, HTTP APIs, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, multi-tenancy, payments/billing, notifications, data import/export, API compatibility, developer experience, utilities, testing, performance, observability, and delivery/configuration.
 
 ## What This Skill Is For
 
