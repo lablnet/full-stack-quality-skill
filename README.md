@@ -38,30 +38,22 @@ full-stack-quality/
 └── templates/
 ```
 
-## Install
+## Installation
 
-Clone the repository:
+### Codex / OpenAI-Style Agents
+
+Codex-style agents can use the skill through `AGENTS.md`:
 
 ```sh
-git clone https://github.com/lablnet/full-stack-quality-skill.git
-cd full-stack-quality-skill
+git submodule add <repo-url> tools/full-stack-quality
 ```
 
-Repository URL:
+Add this to the project's `AGENTS.md`:
 
 ```text
-https://github.com/lablnet/full-stack-quality-skill.git
+For full-stack quality reviews, read tools/full-stack-quality/SKILL.md
+and follow it. Supporting files are in the same folder.
 ```
-
-## Install For Codex / OpenAI-Style Agents
-
-For a project-level instruction file, copy the adapter to the target project root:
-
-```sh
-cp agents/codex-AGENTS.md /path/to/your-project/AGENTS.md
-```
-
-Then copy or install the skill folder wherever your Codex environment loads skills from. If your environment supports workspace skills, place the full `full-stack-quality-skill` folder in that skill location.
 
 Use it with prompts like:
 
@@ -73,15 +65,25 @@ Use full-stack-quality to review this project. Audit only, read-only.
 Use full-stack-quality to review the backend, database schema, and HTTP API. Produce review.md and findings.json.
 ```
 
-## Install For Claude Code
+### Claude Code
 
-Copy the Claude adapter to the target project root:
+For all projects, install the skill in your personal Claude skills directory:
 
 ```sh
-cp agents/claude-CLAUDE.md /path/to/your-project/CLAUDE.md
+git clone <repo-url> ~/.claude/skills/full-stack-quality
 ```
 
-If the project already has `CLAUDE.md`, merge the relevant rules instead of overwriting it.
+For one project, add it inside the repository:
+
+```sh
+git submodule add <repo-url> .claude/skills/full-stack-quality
+```
+
+If the project needs persistent Claude instructions, copy or merge:
+
+```sh
+cp .claude/skills/full-stack-quality/agents/claude-CLAUDE.md CLAUDE.md
+```
 
 Use it with prompts like:
 
@@ -89,37 +91,44 @@ Use it with prompts like:
 Use the full-stack-quality rules to audit this repo. Do not edit files.
 ```
 
-## Install For Cursor
+### Cursor
 
-Create the Cursor rules directory and copy the rule:
+Install the skill inside Cursor's project tools folder:
 
 ```sh
-mkdir -p /path/to/your-project/.cursor/rules
-cp agents/cursor-full-stack-quality.mdc /path/to/your-project/.cursor/rules/full-stack-quality.mdc
+git submodule add <repo-url> .cursor/tools/full-stack-quality
 ```
 
-Use it in Cursor by asking:
+Create `.cursor/rules/full-stack-quality.mdc`:
+
+```text
+---
+description: Full-stack quality review for database, backend, frontend, APIs, GraphQL, security, testing, performance, observability, delivery, and utilities.
+---
+
+Read .cursor/tools/full-stack-quality/SKILL.md and follow it.
+```
+
+Use it with:
 
 ```text
 Apply the full-stack-quality rule and review the frontend architecture.
 ```
 
-## Install For Antigravity
+### Antigravity
 
 Antigravity supports workspace rules under `.agents/rules/` and workspace skills under `.agents/skills/`.
-
-For a workspace rule:
-
-```sh
-mkdir -p /path/to/your-project/.agents/rules
-cp agents/antigravity-full-stack-quality.md /path/to/your-project/.agents/rules/full-stack-quality.md
-```
 
 For a workspace skill:
 
 ```sh
-mkdir -p /path/to/your-project/.agents/skills
-cp -R . /path/to/your-project/.agents/skills/full-stack-quality
+git submodule add <repo-url> .agents/skills/full-stack-quality
+```
+
+Optional workspace rule in `.agents/rules/full-stack-quality.md`:
+
+```text
+Read .agents/skills/full-stack-quality/SKILL.md and follow it for full-stack quality review and implementation tasks.
 ```
 
 Use it with:
@@ -128,12 +137,19 @@ Use it with:
 Use the full-stack-quality skill to review this project read-only.
 ```
 
-## Install For Gemini Tools That Support AGENTS.md
+### Gemini Tools That Support AGENTS.md
 
-Copy the Gemini adapter to the project root:
+Install the skill as a project tool:
 
 ```sh
-cp agents/gemini-AGENTS.md /path/to/your-project/AGENTS.md
+git submodule add <repo-url> tools/full-stack-quality
+```
+
+Add this to `AGENTS.md`:
+
+```text
+For full-stack quality reviews, read tools/full-stack-quality/SKILL.md
+and follow it. Supporting files are in the same folder.
 ```
 
 Use it with:
@@ -142,16 +158,21 @@ Use it with:
 Use the AGENTS.md full-stack quality rules to audit this codebase.
 ```
 
-## Install For Windsurf
+### Windsurf
 
-For modern Windsurf rules, copy the starter rule to the project rules directory:
+Install the skill as a project tool:
 
 ```sh
-mkdir -p /path/to/your-project/.windsurf/rules
-cp agents/windsurf-full-stack-quality.md /path/to/your-project/.windsurf/rules/full-stack-quality.md
+git submodule add <repo-url> tools/full-stack-quality
 ```
 
-If your setup uses the legacy root `.windsurfrules` file, merge the contents of `agents/windsurf-full-stack-quality.md` into `.windsurfrules`.
+Create `.windsurf/rules/full-stack-quality.md`:
+
+```text
+Read tools/full-stack-quality/SKILL.md and follow it for full-stack quality review and implementation tasks.
+```
+
+If your setup uses the legacy root `.windsurfrules` file, add the same instruction there.
 
 Use it with:
 
