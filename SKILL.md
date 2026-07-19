@@ -105,14 +105,25 @@ When writing or reviewing code, pick examples that match the repo's existing lan
 
 - TypeScript or JavaScript backend: `examples/backend-node-typescript.md`
 - Python backend: `examples/backend-python.md`
+- Django backend: `examples/backend-django.md`
 - PHP/Laravel backend: `examples/backend-php-laravel.md`
 - Java/Spring backend: `examples/backend-java-spring.md`
+- C# / ASP.NET Core backend: `examples/backend-csharp-aspnet.md`
+- Go backend: `examples/backend-go.md`
+- Ruby on Rails backend: `examples/backend-ruby-rails.md`
 - React frontend: `examples/frontend-react.md`
+- Next.js full-stack/frontend: `examples/frontend-nextjs.md`
 - Vue frontend: `examples/frontend-vue.md`
 - Angular frontend: `examples/frontend-angular.md`
+- SvelteKit frontend/full-stack: `examples/frontend-sveltekit.md`
+- Flutter mobile: `examples/mobile-flutter.md`
+- React Native mobile: `examples/mobile-react-native.md`
+- Kotlin / Android mobile: `examples/mobile-kotlin-android.md`
+- Swift / iOS mobile: `examples/mobile-swift-ios.md`
 - SQL schema and migrations: `examples/database-sql.md`
 - HTTP API contracts: `examples/http-api.md`
 - GraphQL schema and resolver examples: `examples/graphql.md`
+- Example selection rules: `examples/language-selection.md`
 
 If the stack is not represented, use the closest example for the concept only and translate into the project's style.
 
