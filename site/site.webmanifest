@@ -1,0 +1,17 @@
+{
+  "name": "Full-Stack Quality Skill",
+  "short_name": "FS-Quality",
+  "description": "A reusable AI coding skill for full-stack audits, architecture guidance, project memory, and CI quality gates.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1018",
+  "theme_color": "#0b1018",
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
