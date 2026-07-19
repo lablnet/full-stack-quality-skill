@@ -166,11 +166,53 @@
       "API and architecture docs match code",
       "known legacy exceptions are marked",
       "docs are concise enough to be used"
+    ],
+    "multi_tenancy": [
+      "tenant scope enforced on every relevant read and write",
+      "tenant-aware uniqueness and indexes used where needed",
+      "tenant context carried safely through jobs and webhooks",
+      "cache keys include tenant scope when needed",
+      "cross-tenant admin access is explicit and auditable"
+    ],
+    "payments": [
+      "payment mutations are idempotent",
+      "webhooks are verified and duplicate-safe",
+      "billing state is reconciled with provider state",
+      "refunds, cancellations, trials, and invoices have clear state transitions",
+      "raw payment data is not stored unsafely"
+    ],
+    "notifications": [
+      "unsubscribe and preferences respected",
+      "notification sends are retryable and observable",
+      "duplicate sends prevented for critical messages",
+      "templates are traceable",
+      "PII and secrets are not exposed in message content"
+    ],
+    "data_import_export": [
+      "imports validate before mutating data",
+      "bulk operations report row-level failures",
+      "imports are idempotent or deduplicated where needed",
+      "file size and processing limits are bounded",
+      "exports enforce authorization and privacy"
+    ],
+    "api_compatibility": [
+      "breaking changes are versioned or deprecated",
+      "response and error shapes remain compatible with known clients",
+      "enum, nullability, and field changes are reviewed for compatibility",
+      "deprecations have migration path and sunset plan",
+      "critical contracts have tests"
+    ],
+    "developer_experience": [
+      "setup commands work from a clean checkout",
+      "environment variables and local services are documented",
+      "scripts are discoverable and consistent",
+      "seed/test data is safe and reproducible",
+      "debugging and common troubleshooting paths are documented"
     ]
   },
   "finding_shape": {
     "id": "short-stable-id",
-    "area": "database|backend|frontend|mobile|http_api|graphql|security|privacy|accessibility|i18n|analytics|background_jobs|ai_safety|infrastructure|documentation|utilities|testing|performance|observability|delivery|project_context|cross_stack",
+    "area": "database|backend|frontend|mobile|http_api|graphql|security|privacy|accessibility|i18n|analytics|background_jobs|ai_safety|infrastructure|documentation|multi_tenancy|payments|notifications|data_import_export|api_compatibility|developer_experience|utilities|testing|performance|observability|delivery|project_context|cross_stack",
     "severity": "critical|high|medium|low",
     "title": "concise problem statement",
     "evidence": [
