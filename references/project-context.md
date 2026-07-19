@@ -65,24 +65,7 @@ Track:
 
 ## Drift Detection
 
-Drift means the docs and the code no longer agree.
-
-Examples:
-
-- `architecture.md` says all database access goes through repositories, but new controllers call the database directly.
-- `security.md` says admin routes require a policy guard, but a new admin route has no guard.
-- `ui-kit.md` says `Button` is canonical, but a new custom button component appears.
-- `testing.md` says auth changes need API tests, but a PR changes auth without tests.
-- `docs/decisions.md` says GraphQL is not used, but GraphQL dependencies or schema files appear.
-
-Drift detection checks generated docs against the current code and records mismatches in `docs/audit/drift-report.md`.
-
-Drift severity:
-
-- Critical: doc mismatch hides security, data integrity, auth, or deploy risk.
-- High: target architecture boundary is violated.
-- Medium: docs are stale enough to mislead future work.
-- Low: names, paths, or minor references are stale.
+Verify generated docs against current code and record mismatches in `docs/audit/drift-report.md`.
 
 ## Target Architecture Decisions
 

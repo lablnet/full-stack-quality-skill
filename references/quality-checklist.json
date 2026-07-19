@@ -103,11 +103,74 @@
       "audit inventory records health score, formula, and trend",
       "drift report verifies docs against current code",
       "CI quality gate checks diffs against accepted project context"
+    ],
+    "mobile": [
+      "platform conventions followed",
+      "permissions match actual data and feature use",
+      "offline and poor-network states handled",
+      "sensitive tokens not stored unsafely",
+      "release steps documented"
+    ],
+    "accessibility": [
+      "semantic controls used",
+      "keyboard and focus behavior works",
+      "labels and accessible names present",
+      "contrast and zoom/reflow supported",
+      "dynamic UI does not hide critical information from assistive tech"
+    ],
+    "i18n": [
+      "user-facing strings extracted",
+      "locale-aware formatting used",
+      "plurals and translated sentences handled safely",
+      "RTL and text expansion considered when relevant",
+      "translation keys are not missing or stale"
+    ],
+    "privacy": [
+      "PII collection minimized",
+      "PII not leaked to logs, analytics, URLs, errors, or client payloads",
+      "retention, deletion, export, and consent behavior documented",
+      "sensitive access restricted",
+      "data sharing with external services is intentional"
+    ],
+    "analytics": [
+      "events have owner, purpose, and schema",
+      "event names are consistent",
+      "duplicate events avoided",
+      "PII is not sent in event payloads",
+      "critical funnels are covered"
+    ],
+    "background_jobs": [
+      "jobs are idempotent or deduplicated",
+      "retry and dead-letter behavior defined",
+      "failures are observable",
+      "batch sizes are bounded",
+      "schedules are documented and environment-aware"
+    ],
+    "ai_safety": [
+      "model inputs and outputs are bounded",
+      "tools with side effects require approval",
+      "prompt injection and untrusted retrieval are considered",
+      "sensitive data sent to models is minimized",
+      "evals cover important model behavior"
+    ],
+    "infrastructure": [
+      "infrastructure is declarative where practical",
+      "IAM follows least privilege",
+      "network exposure is narrow",
+      "secrets are managed outside repo/images",
+      "backups, rollback, and environment parity are considered"
+    ],
+    "documentation": [
+      "setup instructions are current",
+      "environment variables are documented",
+      "API and architecture docs match code",
+      "known legacy exceptions are marked",
+      "docs are concise enough to be used"
     ]
   },
   "finding_shape": {
     "id": "short-stable-id",
-    "area": "database|backend|frontend|http_api|graphql|security|utilities|testing|performance|observability|delivery|project_context|cross_stack",
+    "area": "database|backend|frontend|mobile|http_api|graphql|security|privacy|accessibility|i18n|analytics|background_jobs|ai_safety|infrastructure|documentation|utilities|testing|performance|observability|delivery|project_context|cross_stack",
     "severity": "critical|high|medium|low",
     "title": "concise problem statement",
     "evidence": [

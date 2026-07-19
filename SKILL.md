@@ -69,6 +69,15 @@ Read only the files needed for the task:
 - Performance and scalability: `references/performance.md`
 - Observability, logging, metrics, tracing, and errors: `references/observability.md`
 - Delivery, configuration, environments, CI/CD, and operational hygiene: `references/delivery.md`
+- Mobile app quality: `references/mobile.md`
+- Accessibility beyond frontend basics: `references/accessibility.md`
+- Internationalization/localization: `references/i18n.md`
+- Privacy and compliance: `references/privacy.md`
+- Analytics and event tracking: `references/analytics.md`
+- Background jobs, queues, and scheduled work: `references/background-jobs.md`
+- AI/LLM feature safety: `references/ai-safety.md`
+- Infrastructure/cloud/IaC: `references/infrastructure.md`
+- Documentation quality: `references/documentation.md`
 - Machine-readable review checklist and severity model: `references/quality-checklist.json`
 - Concrete examples and anti-examples: `examples/`
 - Review/audit prompts by area: `auditors/`
@@ -103,7 +112,7 @@ If the stack is not represented, use the closest example for the concept only an
 
 ## Review Workflow
 
-1. Classify the task: database, backend, frontend, HTTP API, GraphQL API, security, testing, performance, observability, delivery/configuration, utilities/libraries, or cross-stack.
+1. Classify the task: database, backend, frontend, mobile, HTTP API, GraphQL API, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, testing, performance, observability, delivery/configuration, utilities/libraries, or cross-stack.
 2. Load the relevant reference files, auditor file, and `references/quality-checklist.json`.
 3. Inventory the current implementation:
    - database: schema source, migrations, models, relations, indexes, constraints;
@@ -116,6 +125,15 @@ If the stack is not represented, use the closest example for the concept only an
    - performance: query patterns, rendering cost, payload size, caching, async work;
    - observability: logs, metrics, traces, alerting, error handling, correlation IDs;
    - delivery/configuration: env config, CI checks, migrations, deploy safety;
+   - mobile: platform conventions, state, offline behavior, native permissions, releases;
+   - accessibility: keyboard/screen-reader behavior, semantics, contrast, focus, labels;
+   - i18n: string extraction, locale formatting, RTL, translation safety;
+   - privacy: PII collection, retention, consent, deletion/export, data minimization;
+   - analytics: event naming, ownership, duplication, PII leakage, funnel coverage;
+   - background jobs: retries, idempotency, dead letters, scheduling, observability;
+   - AI/LLM safety: prompt boundaries, tool permissions, evals, data leakage, fallback behavior;
+   - infrastructure: IaC, IAM, network exposure, secrets, environment parity;
+   - documentation: README/API/onboarding accuracy, stale docs, generated-doc drift;
    - utilities/libraries: shared helpers, duplicate functions, dead code, dependency overlap.
 4. Report findings by severity: critical, high, medium, low.
 5. Recommend one practical path. Include trade-offs only when there are genuinely competing good options.
@@ -156,7 +174,7 @@ Use this workflow for broad audits that cover multiple areas.
    - the relevant file from `references/`
    - `references/quality-checklist.json`
    - `templates/review-findings.md`
-4. For whole-project audits, do not run a single general auditor when subagents are available. Fan out across all relevant areas: database, backend, frontend, HTTP API, GraphQL, security, utilities, testing, performance, observability, and delivery/configuration.
+4. For whole-project audits, do not run a single general auditor when subagents are available. Fan out across all relevant areas: database, backend, frontend, mobile, HTTP API, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, utilities, testing, performance, observability, and delivery/configuration.
 5. For narrow reviews, run only the matching auditor or auditors. For example, a frontend-only architecture review should use the frontend auditor, not every auditor.
 6. Skip auditors for systems the project does not use. For example, skip GraphQL if there is no GraphQL schema, resolver, client operation, or dependency.
 7. If subagents are unavailable, run the same auditors sequentially in the main context.
@@ -178,5 +196,14 @@ Use this workflow for broad audits that cover multiple areas.
 - Performance: measure first when possible; fix obvious N+1, unbounded lists, large payloads, and expensive renders early.
 - Observability: logs should explain what happened without leaking sensitive data; important flows need metrics and traceability.
 - Delivery: config should be explicit per environment; CI should catch formatting, typing, tests, security checks, and migration issues when available.
+- Mobile: respect platform patterns, permissions, offline/network transitions, release safety, and device constraints.
+- Accessibility: semantic UI, keyboard access, visible focus, labels, contrast, and assistive technology behavior are quality requirements.
+- Internationalization: do not hardcode user-facing strings, dates, numbers, currencies, or layout assumptions when the app supports multiple locales.
+- Privacy: collect the least data needed, protect PII, document retention/deletion/export behavior, and avoid leaking user data.
+- Analytics: events should be purposeful, consistently named, owned, documented, and free of sensitive data.
+- Background jobs: retries must be idempotent, failures visible, schedules documented, and queues observable.
+- AI/LLM safety: prompts, tools, retrieval, data handling, evals, and fallbacks need explicit boundaries.
+- Infrastructure: prefer declarative, reviewed, least-privilege infrastructure with safe defaults and environment parity.
+- Documentation: docs should be accurate, concise, linked to decisions, and verified against code when used to guide agents.
 - Utilities: shared helpers should be small, named by domain purpose, tested when behavior is nontrivial, and not duplicate built-in or installed library features.
 - Engineering: KISS before cleverness, DRY after the duplication is real, composition before inheritance, deletion before abstraction.

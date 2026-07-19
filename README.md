@@ -2,7 +2,7 @@
 
 A reusable AI coding skill for reviewing, designing, and implementing maintainable full-stack software.
 
-It covers database design, backend architecture, frontend architecture, HTTP APIs, GraphQL, security, utilities, testing, performance, observability, and delivery/configuration.
+It covers database design, backend architecture, frontend architecture, mobile, HTTP APIs, GraphQL, security, privacy, accessibility, i18n, analytics, background jobs, AI/LLM safety, infrastructure, documentation, utilities, testing, performance, observability, and delivery/configuration.
 
 ## What This Skill Is For
 
@@ -225,8 +225,6 @@ For deeper repository work, the skill can also:
 - compute health score and trend;
 - verify drift;
 - support CI quality gates.
-
-Drift means the docs and code no longer agree. For example, `architecture.md` says database access must go through repositories, but a new route calls the database directly.
 
 Recommended files:
 
