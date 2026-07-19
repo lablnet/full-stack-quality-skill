@@ -1,0 +1,25 @@
+---
+description: Full-stack quality review and implementation standards for database, backend, frontend, HTTP API, GraphQL, security, testing, performance, observability, delivery, and utilities.
+globs:
+alwaysApply: false
+---
+
+# Full-Stack Quality
+
+Use this rule for reviews, audits, architecture choices, and implementation work involving database, backend, frontend, REST/HTTP APIs, GraphQL, security, testing, performance, observability, delivery/configuration, or utility/library code.
+
+## Rules
+
+- Review/audit mode is read-only. Do not edit files unless the user explicitly asks for implementation or document generation.
+- Inspect existing conventions before recommending changes.
+- Prefer small, idiomatic, maintainable changes.
+- Findings require evidence: path, line or symbol when available, observed behavior, impact, recommendation, and validation.
+- Use Markdown for human reports and JSON for structured findings.
+- Preserve the project's stack and style.
+
+## Frontend Logic Placement
+
+- Vue: move reusable JS/TS logic into composables, stores, services, or utilities.
+- React: move reusable stateful logic into hooks and pure logic into utilities.
+- Angular: move business/data logic into services or facades, not components.
+- Svelte: move shared state into stores and reusable logic into modules.
