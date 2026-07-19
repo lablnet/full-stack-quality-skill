@@ -19,6 +19,21 @@ It covers database design, backend architecture, frontend architecture, mobile, 
 
 Audit/review mode is read-only. The agent may recommend changes, but must not edit source code, schemas, configs, docs, generated files, or lockfiles unless the user explicitly asks for implementation or document generation.
 
+## Coverage
+
+Core areas:
+
+- database, backend, frontend, mobile;
+- HTTP API, GraphQL, API compatibility;
+- security, privacy, accessibility, i18n;
+- testing, performance, observability, delivery/configuration;
+- utilities, documentation, developer experience;
+- analytics, background jobs, notifications;
+- multi-tenancy, payments/billing, data import/export;
+- AI/LLM safety and infrastructure/cloud/IaC.
+
+The skill is intentionally stack-aware but language-agnostic. It should preserve the project's existing architecture and conventions unless the user asks to change them.
+
 ## Folder Structure
 
 ```text
@@ -38,6 +53,44 @@ full-stack-quality/
 ├── references/
 └── templates/
 ```
+
+## Examples
+
+The `examples/` folder is intentionally selective. It gives the agent enough patterns to translate into most stacks without becoming a 50-language cookbook.
+
+Backend examples:
+
+- Node.js / TypeScript
+- Python
+- Django
+- PHP / Laravel
+- Java / Spring
+- C# / ASP.NET Core
+- Go
+- Ruby on Rails
+
+Frontend and full-stack examples:
+
+- React
+- Next.js
+- Vue
+- Angular
+- SvelteKit
+
+Mobile examples:
+
+- Flutter
+- React Native
+- Kotlin / Android
+- Swift / iOS
+
+API/data examples:
+
+- SQL
+- HTTP API
+- GraphQL
+
+If the exact language is missing, read `examples/language-selection.md` and translate the closest pattern into the repo's style.
 
 ## Installation
 
@@ -114,6 +167,14 @@ Use it with:
 
 ```text
 Apply the full-stack-quality rule and review the frontend architecture.
+```
+
+To update the Cursor submodule later:
+
+```sh
+git submodule update --remote .cursor/tools/full-stack-quality
+git add .cursor/tools/full-stack-quality
+git commit -m "Update full-stack-quality skill"
 ```
 
 ### Antigravity
@@ -209,10 +270,25 @@ findings/
 ├── testing.findings.json
 ├── performance.findings.json
 ├── observability.findings.json
-└── delivery.findings.json
+├── delivery.findings.json
+├── mobile.findings.json
+├── accessibility.findings.json
+├── privacy.findings.json
+├── multi-tenancy.findings.json
+├── payments.findings.json
+├── notifications.findings.json
+├── data-import-export.findings.json
+├── api-compatibility.findings.json
+└── developer-experience.findings.json
 ```
 
 Use one `findings.json` for small reviews. Use per-area JSON files by default when the review is broad, parallel, or when separate tools/agents will process each area.
+
+## Parallel Audits
+
+For whole-project audits, the skill asks agents with subagent support to launch one read-only auditor per relevant area in parallel. It should skip irrelevant areas, such as GraphQL when the project has no GraphQL schema, resolver, operation, or dependency.
+
+For narrow reviews, it should use only the matching auditor. A frontend-only review should not launch every auditor.
 
 ## Project Context Mode
 
@@ -244,6 +320,8 @@ docs/
         └── security.findings.json
 ```
 
+Health score is a trend signal, not an absolute truth. Keep the formula stable so future runs can be compared.
+
 ## Agent Tool Adapters
 
 The `agents/` folder contains copyable starter files for popular AI coding tools:
@@ -255,13 +333,10 @@ The `agents/` folder contains copyable starter files for popular AI coding tools
 - Gemini tools that support agent files: copy `agents/gemini-AGENTS.md` to `AGENTS.md`.
 - Windsurf: copy `agents/windsurf-full-stack-quality.md` to `.windsurf/rules/full-stack-quality.md` or adapt it to the project's Windsurf rules format.
 
-## Suggested GitHub Repo Names
+## Repository Name
 
-- `full-stack-quality-skill`
-- `agent-fullstack-quality`
-- `fullstack-architecture-auditor`
-- `full-stack-code-review-skill`
-- `ai-fullstack-standards`
-- `fullstack-engineering-standards`
+Recommended repository name:
 
-Recommended: `full-stack-quality-skill`.
+```text
+full-stack-quality-skill
+```
