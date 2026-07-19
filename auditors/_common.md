@@ -14,6 +14,8 @@ Apply these rules to every audit area.
 
 Return findings as Markdown for humans. When writing files, use JSON for structured findings unless the project or user requires YAML.
 
+For broad parallel audits, each area auditor should write or return findings intended for `findings/<area>.findings.json`. Do not combine all area findings into one large `findings.json` unless the user asks for a single file.
+
 ## Subagent Rules
 
 For broad audits, each area auditor may run as a parallel subagent when the environment supports it.
