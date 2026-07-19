@@ -34,7 +34,7 @@ full-stack-quality/
 │   ├── gemini-AGENTS.md
 │   └── windsurf-full-stack-quality.md
 ├── auditors/
-├── examples/
+├── examples/              # stack/language examples, intentionally selective
 ├── references/
 └── templates/
 ```
