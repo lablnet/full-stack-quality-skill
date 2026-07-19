@@ -24,7 +24,7 @@ Short summary after findings, not before.
 
 ## Optional Structured Finding
 
-Use JSON for machine-readable findings. For broad parallel audits, write per-area files such as `findings/security.findings.json` and `findings/frontend.findings.json` instead of one large `findings.json`.
+Use JSON for machine-readable findings. If more than one auditor runs, write per-area files such as `findings/security.findings.json` and `findings/frontend.findings.json` instead of one large `findings.json`, unless the user explicitly asks for one combined file.
 
 ```json
 {

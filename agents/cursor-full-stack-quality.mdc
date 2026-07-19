@@ -17,6 +17,7 @@ Use this rule for reviews, audits, architecture choices, and implementation work
 - Prefer small, idiomatic, maintainable changes.
 - Findings require evidence: path, line or symbol when available, observed behavior, impact, recommendation, and validation.
 - Use Markdown for human reports and JSON for structured findings.
+- If more than one auditor runs, persist structured output as `findings/<area>.findings.json` files, not one large `findings.json`, unless the user explicitly asks for one combined file.
 - Preserve the project's stack and style.
 
 ## Frontend Logic Placement

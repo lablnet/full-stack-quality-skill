@@ -248,14 +248,14 @@ Review this repo using the full-stack-quality rules. Audit only.
 - JSON for structured findings and machine-readable checklists.
 - YAML only when the existing project/tool requires YAML or the user asks for it.
 
-Preferred output for small or narrow audits:
+Preferred output for single-area audits:
 
 ```text
 findings.json
 review.md
 ```
 
-Preferred output for broad or parallel audits:
+Required output for broad, multi-area, or parallel audits unless the user explicitly asks for one combined file:
 
 ```text
 review.md
@@ -282,7 +282,7 @@ findings/
 └── developer-experience.findings.json
 ```
 
-Use one `findings.json` for small reviews. Use per-area JSON files by default when the review is broad, parallel, or when separate tools/agents will process each area.
+Use one `findings.json` only for single-area reviews or when the user explicitly asks for one combined file. Use per-area JSON files when more than one auditor runs.
 
 ## Parallel Audits
 
