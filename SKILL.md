@@ -103,6 +103,24 @@ If the stack is not represented, use the closest example for the concept only an
 8. For an architecture choice, use `templates/adr.md`.
 9. For implementation work, use `templates/implementation-plan.md` before editing when the change is broad.
 
+## Parallel Auditor Workflow
+
+Use this workflow for broad audits that cover multiple areas.
+
+1. If the environment supports subagents, run relevant area auditors in parallel.
+2. Each auditor subagent is read-only.
+3. Give each subagent only the context it needs:
+   - `auditors/_common.md`
+   - its own area file from `auditors/`
+   - the relevant file from `references/`
+   - `references/quality-checklist.json`
+   - `templates/review-findings.md`
+4. Skip auditors for systems the project does not use. For example, skip GraphQL if there is no GraphQL schema, resolver, client operation, or dependency.
+5. If subagents are unavailable, run the same auditors sequentially in the main context.
+6. Merge findings after all auditors finish.
+7. Deduplicate overlapping findings by keeping the clearest evidence and preserving all affected areas.
+8. Produce Markdown for the human report and JSON for structured findings.
+
 ## Design Defaults
 
 - Database: normalized by default; denormalize only for measured read performance or clear product requirements.
