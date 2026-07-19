@@ -1,7 +1,0 @@
-interface:
-  display_name: "Full-Stack Quality"
-  short_description: "Review database, backend, frontend, and APIs"
-  default_prompt: "Use $full-stack-quality to review this project for database, backend, frontend, and HTTP API quality issues."
-
-policy:
-  allow_implicit_invocation: true
