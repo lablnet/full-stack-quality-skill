@@ -13,6 +13,7 @@ It covers database design, backend architecture, frontend architecture, HTTP API
 - API design review for REST/HTTP and GraphQL.
 - Frontend framework guidance for React, Vue, Angular, Svelte, and server-rendered templates.
 - Security, testing, performance, observability, and CI/CD hygiene.
+- Optional project context mode: audit repo, decide target architecture, generate project docs, verify drift, track long-term memory, health score, and CI quality gates.
 
 ## Core Rule
 
@@ -186,14 +187,14 @@ Review this repo using the full-stack-quality rules. Audit only.
 - JSON for structured findings and machine-readable checklists.
 - YAML only when the existing project/tool requires YAML or the user asks for it.
 
-Preferred audit output:
+Preferred output for small or narrow audits:
 
 ```text
 findings.json
 review.md
 ```
 
-For larger audits, multiple JSON files are fine:
+Preferred output for broad or parallel audits:
 
 ```text
 review.md
@@ -211,7 +212,39 @@ findings/
 └── delivery.findings.json
 ```
 
-Use one `findings.json` for small reviews. Use per-area JSON files when the review is large or when separate tools/agents will process each area.
+Use one `findings.json` for small reviews. Use per-area JSON files by default when the review is broad, parallel, or when separate tools/agents will process each area.
+
+## Project Context Mode
+
+For deeper repository work, the skill can also:
+
+- audit the repo;
+- decide a target architecture;
+- generate docs that guide future agents;
+- keep long-term project memory;
+- compute health score and trend;
+- verify drift;
+- support CI quality gates.
+
+Drift means the docs and code no longer agree. For example, `architecture.md` says database access must go through repositories, but a new route calls the database directly.
+
+Recommended files:
+
+```text
+docs/
+├── agents.md
+├── architecture.md
+├── decisions.md
+├── security.md
+├── testing.md
+├── migration-backlog.md
+└── audit/
+    ├── inventory.json
+    ├── drift-report.md
+    └── findings/
+        ├── backend.findings.json
+        └── security.findings.json
+```
 
 ## Agent Tool Adapters
 

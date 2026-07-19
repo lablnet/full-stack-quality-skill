@@ -95,11 +95,19 @@
       "database migrations are deploy-safe or clearly flagged",
       "feature flags have owners and cleanup plans",
       "deployments do not depend on hidden manual steps"
+    ],
+    "project_context": [
+      "target architecture decisions are recorded as ADRs",
+      "project docs guide future agents without duplicating code",
+      "known legacy gaps are tracked in a migration backlog",
+      "audit inventory records health score, formula, and trend",
+      "drift report verifies docs against current code",
+      "CI quality gate checks diffs against accepted project context"
     ]
   },
   "finding_shape": {
     "id": "short-stable-id",
-    "area": "database|backend|frontend|http_api|graphql|security|utilities|testing|performance|observability|delivery|cross_stack",
+    "area": "database|backend|frontend|http_api|graphql|security|utilities|testing|performance|observability|delivery|project_context|cross_stack",
     "severity": "critical|high|medium|low",
     "title": "concise problem statement",
     "evidence": [
