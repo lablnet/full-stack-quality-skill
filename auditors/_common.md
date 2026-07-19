@@ -18,6 +18,8 @@ Return findings as Markdown for humans. When writing files, use JSON for structu
 
 For broad audits, each area auditor may run as a parallel subagent when the environment supports it.
 
+For whole-project audits, do not collapse all areas into one generic auditor when subagents are available. Spawn one read-only subagent per relevant audit area, then merge and deduplicate the results.
+
 Each subagent receives only:
 
 - this `_common.md` file;

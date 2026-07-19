@@ -107,7 +107,7 @@ If the stack is not represented, use the closest example for the concept only an
 
 Use this workflow for broad audits that cover multiple areas.
 
-1. If the environment supports subagents, run relevant area auditors in parallel.
+1. If the environment supports subagents, run one subagent per relevant audit area in parallel.
 2. Each auditor subagent is read-only.
 3. Give each subagent only the context it needs:
    - `auditors/_common.md`
@@ -115,11 +115,13 @@ Use this workflow for broad audits that cover multiple areas.
    - the relevant file from `references/`
    - `references/quality-checklist.json`
    - `templates/review-findings.md`
-4. Skip auditors for systems the project does not use. For example, skip GraphQL if there is no GraphQL schema, resolver, client operation, or dependency.
-5. If subagents are unavailable, run the same auditors sequentially in the main context.
-6. Merge findings after all auditors finish.
-7. Deduplicate overlapping findings by keeping the clearest evidence and preserving all affected areas.
-8. Produce Markdown for the human report and JSON for structured findings.
+4. For whole-project audits, do not run a single general auditor when subagents are available. Fan out across all relevant areas: database, backend, frontend, HTTP API, GraphQL, security, utilities, testing, performance, observability, and delivery/configuration.
+5. For narrow reviews, run only the matching auditor or auditors. For example, a frontend-only architecture review should use the frontend auditor, not every auditor.
+6. Skip auditors for systems the project does not use. For example, skip GraphQL if there is no GraphQL schema, resolver, client operation, or dependency.
+7. If subagents are unavailable, run the same auditors sequentially in the main context.
+8. Merge findings after all auditors finish.
+9. Deduplicate overlapping findings by keeping the clearest evidence and preserving all affected areas.
+10. Produce Markdown for the human report and JSON for structured findings.
 
 ## Design Defaults
 
