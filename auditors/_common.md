@@ -13,3 +13,17 @@ Apply these rules to every audit area.
 9. Use the severity definitions in `references/quality-checklist.json`.
 
 Return findings as Markdown for humans. When writing files, use JSON for structured findings unless the project or user requires YAML.
+
+## Subagent Rules
+
+For broad audits, each area auditor may run as a parallel subagent when the environment supports it.
+
+Each subagent receives only:
+
+- this `_common.md` file;
+- its own area auditor file;
+- the relevant reference file;
+- `references/quality-checklist.json`;
+- `templates/review-findings.md`.
+
+Subagents must stay read-only, return evidence-backed findings, and avoid making cross-area conclusions unless their evidence directly supports them. If subagents are unavailable, run the same auditor instructions sequentially in the main context.
