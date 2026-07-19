@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "severity": {
+    "critical": "Confirmed security exposure, data loss risk, broken auth, destructive migration risk, or production-breaking behavior.",
+    "high": "Likely bug, integrity issue, architecture violation affecting feature work, or missing critical validation.",
+    "medium": "Maintainability, consistency, performance, or testability issue with clear cost.",
+    "low": "Style, naming, documentation, or small cleanup issue."
+  },
+  "areas": {
+    "database": [
+      "single schema source of truth",
+      "normalized transactional schema unless denormalization is justified",
+      "consistent primary and foreign key naming",
+      "constraints for required, unique, and bounded values",
+      "indexes aligned with frequent reads and joins",
+      "safe migration and rollback or forward-fix plan"
+    ],
+    "backend": [
+      "thin transport layer",
+      "business logic isolated from framework edges",
+      "data access isolated from UI/controllers",
+      "no needless abstraction or pass-through wrappers",
+      "dead code removed",
+      "tests cover business rules and critical flows"
+    ],
+    "frontend": [
+      "consistent design system and tokens",
+      "no duplicate core UI components without reason",
+      "framework logic belongs in composables, hooks, services, stores, or utilities rather than bloated pages/components",
+      "accessible semantic controls",
+      "responsive layouts without overlap",
+      "clear loading, empty, error, and success states",
+      "API usage follows project data-loading conventions"
+    ],
+    "security": [
+      "no secrets or credentials committed to code",
+      "authentication and authorization enforced server-side",
+      "external input validated at boundaries",
+      "SQL, shell, template, and HTML injection risks avoided",
+      "sensitive data not leaked in responses, logs, or errors",
+      "dependencies reviewed for high and critical vulnerabilities"
+    ],
+    "http_api": [
+      "method matches operation semantics",
+      "resource-oriented URL design",
+      "consistent status codes",
+      "validated inputs",
+      "stable response and error shapes",
+      "server-side authorization"
+    ],
+    "graphql": [
+      "schema models domain capabilities rather than leaking database tables directly",
+      "nullability is intentional and consistent",
+      "queries are side-effect free and mutations return useful payloads",
+      "resolvers stay thin and delegate business logic",
+      "authorization is enforced server-side",
+      "N+1 query risks are prevented",
+      "list fields are paginated or bounded",
+      "client operations use generated types when available"
+    ],
+    "utilities": [
+      "shared helpers have clear ownership and purpose",
+      "no duplicate utilities for the same behavior",
+      "no custom implementation when a built-in or installed library already solves it well",
+      "wrappers add policy, type safety, observability, or error mapping",
+      "dead utility exports removed",
+      "business-critical utilities tested"
+    ],
+    "testing": [
+      "critical business and user flows covered",
+      "regression tests added for fixed bugs",
+      "tests assert behavior rather than private implementation details",
+      "database and migration risks covered where relevant",
+      "flaky or skipped tests have an owner and reason"
+    ],
+    "performance": [
+      "list endpoints and queries are bounded or paginated",
+      "N+1 query patterns avoided",
+      "payloads contain only needed fields",
+      "expensive frontend renders avoided",
+      "caching has clear invalidation rules",
+      "slow external or background work is not blocking requests unnecessarily"
+    ],
+    "observability": [
+      "important flows have useful logs without sensitive data",
+      "errors are not swallowed silently",
+      "request or correlation IDs are preserved where supported",
+      "critical jobs and external calls expose failures",
+      "metrics and alerts map to user impact or operational risk"
+    ],
+    "delivery": [
+      "configuration is explicit per environment",
+      "secrets are not committed",
+      "CI runs the project's required quality checks",
+      "database migrations are deploy-safe or clearly flagged",
+      "feature flags have owners and cleanup plans",
+      "deployments do not depend on hidden manual steps"
+    ]
+  },
+  "finding_shape": {
+    "id": "short-stable-id",
+    "area": "database|backend|frontend|http_api|graphql|security|utilities|testing|performance|observability|delivery|cross_stack",
+    "severity": "critical|high|medium|low",
+    "title": "concise problem statement",
+    "evidence": [
+      {
+        "path": "file path",
+        "line": "line number when available",
+        "detail": "what was observed"
+      }
+    ],
+    "impact": "why this matters",
+    "recommendation": "smallest practical fix",
+    "validation": "test, migration check, lint, typecheck, or manual verification"
+  }
+}
