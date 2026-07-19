@@ -45,7 +45,7 @@ full-stack-quality/
 Codex-style agents can use the skill through `AGENTS.md`:
 
 ```sh
-git submodule add <repo-url> tools/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git tools/full-stack-quality
 ```
 
 Add this to the project's `AGENTS.md`:
@@ -70,13 +70,13 @@ Use full-stack-quality to review the backend, database schema, and HTTP API. Pro
 For all projects, install the skill in your personal Claude skills directory:
 
 ```sh
-git clone <repo-url> ~/.claude/skills/full-stack-quality
+git clone https://github.com/lablnet/full-stack-quality-skill.git ~/.claude/skills/full-stack-quality
 ```
 
 For one project, add it inside the repository:
 
 ```sh
-git submodule add <repo-url> .claude/skills/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git .claude/skills/full-stack-quality
 ```
 
 If the project needs persistent Claude instructions, copy or merge:
@@ -96,7 +96,7 @@ Use the full-stack-quality rules to audit this repo. Do not edit files.
 Install the skill inside Cursor's project tools folder:
 
 ```sh
-git submodule add <repo-url> .cursor/tools/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git .cursor/tools/full-stack-quality
 ```
 
 Create `.cursor/rules/full-stack-quality.mdc`:
@@ -122,7 +122,7 @@ Antigravity supports workspace rules under `.agents/rules/` and workspace skills
 For a workspace skill:
 
 ```sh
-git submodule add <repo-url> .agents/skills/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git .agents/skills/full-stack-quality
 ```
 
 Optional workspace rule in `.agents/rules/full-stack-quality.md`:
@@ -142,7 +142,7 @@ Use the full-stack-quality skill to review this project read-only.
 Install the skill as a project tool:
 
 ```sh
-git submodule add <repo-url> tools/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git tools/full-stack-quality
 ```
 
 Add this to `AGENTS.md`:
@@ -163,7 +163,7 @@ Use the AGENTS.md full-stack quality rules to audit this codebase.
 Install the skill as a project tool:
 
 ```sh
-git submodule add <repo-url> tools/full-stack-quality
+git submodule add https://github.com/lablnet/full-stack-quality-skill.git tools/full-stack-quality
 ```
 
 Create `.windsurf/rules/full-stack-quality.md`:
