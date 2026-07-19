@@ -11,6 +11,8 @@ Use this rule for reviews, audits, architecture choices, and implementation work
 ## Rules
 
 - Review/audit mode is read-only. Do not edit files unless the user explicitly asks for implementation or document generation.
+- For whole-project audits, use parallel subagents when available: one subagent per relevant audit area. Do not collapse database, backend, frontend, APIs, security, testing, performance, observability, delivery, and utilities into one generic auditor.
+- For narrow reviews, use only the matching auditor or auditors. For example, a frontend-only review should use the frontend auditor.
 - Inspect existing conventions before recommending changes.
 - Prefer small, idiomatic, maintainable changes.
 - Findings require evidence: path, line or symbol when available, observed behavior, impact, recommendation, and validation.
